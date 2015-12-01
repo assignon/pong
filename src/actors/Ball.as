@@ -55,25 +55,25 @@ package actors
 		
 		private function restart(e:TimerEvent):void 
 		{
-			_movement = MovementCalculator.calculateMovement(15 + Math.random() * 10, Math.random() * 360);
-			if (_movement.x > 0 && _movement.x < 2) _movement.x += 2;
-			if (_movement.x < 0 && _movement.x > -2) _movement.x -= 2;
+			_movement = MovementCalculator.calculateMovement(7 + Math.random() *7, Math.random()*360);
+			if (_movement.x > 0 && _movement.x < 2) _movement.y += 2;
+			if (_movement.x < 0 && _movement.x > -2) _movement.y -= 2;
 		}
 		private function loop(e:Event):void 
 		{
 			this.x += _movement.x;
 			this.y += _movement.y;
 			
-			if (this.y <= 0 || this.y >= stage.stageHeight)
+			if (this.x <= 0 || this.x >= stage.stageWidth)
 			{
-				_movement.y *= -1;
+				_movement.x *= -1  ;
 				
 			}
-			if (this.x > stage.stageWidth)
+			if (this.y > stage.stageHeight)
 			{
 				dispatchEvent(new Event(Ball.OUTSIDE_RIGHT));
 			}
-			if (this.x < 0)
+			if (this.y < 0)
 			{
 				dispatchEvent(new Event(Ball.OUTSIDE_LEFT));
 			}

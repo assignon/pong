@@ -8,12 +8,13 @@ package screens
 	import flash.events.KeyboardEvent;
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author yanick007
 	 */
 	public class IntroScreen extends Screen 
 	{
 		private var title:TextField;
 		private var start:TextField;
+		private var titel2:TextField;
 		
 		public static const START_GAME:String = "start game";		
 				
@@ -45,6 +46,15 @@ package screens
 			
 			addChild(title);
 			
+			titel2 = new TextField();
+			titel2.embedFonts = true;
+			titel2.text = "Yanick007";
+			titel2.autoSize = TextFieldAutoSize.LEFT;
+			titel2.setTextFormat(textFormat);
+			
+			titel2.x = stage.stageWidth / 2 - titel2.textWidth / 2;
+			titel2.y = stage.stageHeight / 2 + 25;
+			addChild(titel2);
 			
 			
 			start = new TextField();

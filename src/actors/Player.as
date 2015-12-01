@@ -4,13 +4,23 @@ package actors
 	import flash.events.Event;
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author yanick007
 	 */
 	public class Player extends Paddle 
 	{
 		private var controller:Controller;
 		private var speed:Number = 0;
+		private var _maxSpeed:Number = 15;
 		
+		public function get maxSpeed():Number
+		{
+			return _maxSpeed;
+		}
+		
+		public function set maxSpeed(NmaxSpeed:Number):void
+		{
+			_maxSpeed = NmaxSpeed;
+		}
 		public function Player() 
 		{
 			this.addEventListener(Event.ADDED_TO_STAGE, init);		
@@ -25,11 +35,13 @@ package actors
 		{
 			if (controller.up)
 			{
-				speed = -15;
+				//augmenter la vitesse de raquette//
+				speed = -_maxSpeed;
 			}
 			else if(controller.down)
 			{
-				speed = 15;
+				//diminuer la vitesse de raquette//
+				speed = _maxSpeed;
 			}else
 			{
 				if (speed > 0) speed--;
@@ -41,7 +53,7 @@ package actors
 				
 				
 			}
-			this.y += speed;
+			this.x += speed;
 		}
 		
 	}

@@ -14,7 +14,7 @@ package screens
 	
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author yanick007
 	 */
 	public class GameScreen extends Screen
 	{
@@ -47,14 +47,18 @@ package screens
 			{
 				
 				addChild(paddles[i]);
-				paddles[i].y = stage.stageHeight / 2;
+				paddles[i].x = stage.stageHeight / 2;
+				
 			}	
-			paddles[0].x = stage.stageWidth - 100;
-			
+			paddles[0].x = stage.stageWidth -100;
+			paddles[0].y = 70; 
 			paddles[1].x = 100;
-			
+			paddles[1].y = 550;
 			scoreboard = new Scoreboard();
 			addChild(scoreboard);
+			if (paddles[1].x > stage.stageWidth - 100) {
+			   paddles[1].x = 0;
+			  }
 			
 			this.addEventListener(Event.ENTER_FRAME, loop);
 		}		
@@ -71,8 +75,8 @@ package screens
 				{
 					if (paddles[j].hitTestObject(balls[i]))
 					{
-						balls[i].xMove *= -1;
-						balls[i].x += balls[i].xMove / 2;
+						balls[i].xMove *= +1;
+						balls[i].y += balls[i].xMove / 2;
 						
 						dispatchEvent(new Event(BALL_BOUNCE));
 					}

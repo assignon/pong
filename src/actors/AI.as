@@ -4,7 +4,7 @@ package actors
 	
 	/**
 	 * ...
-	 * @author erwin henraat
+	 * @author yanick007
 	 */
 	public class AI extends Paddle 
 	{
@@ -44,10 +44,10 @@ package actors
 			getTarget();
 									
 			if(_target != null){
-				if (_target.y < this.y - 20)_speed = -_maxSpeed;
-				else if (_target.y > this.y + 20)_speed = _maxSpeed;
+				if (_target.x < this.x - 20)_speed = -_maxSpeed;
+				else if (_target.x > this.x + 20)_speed = _maxSpeed;
 				else _speed = 0;
-				this.y += _speed;
+				this.x += _speed;
 			}
 		}		
 	}
